@@ -1,6 +1,22 @@
+import Activities from "./components/Activities";
+
 function App() {
   return (
-    <div><p>This is a test.</p></div>
+    <div id="container">
+      <div id="top">
+        <header>
+          Fitness Tracker
+        </header>
+        <nav>
+          <ul>
+            <li><a href="#">Routines</a></li>
+            <li><a href="#">Activites</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <Activities />
+    </div>
   );
 }
 

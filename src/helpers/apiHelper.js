@@ -3,8 +3,8 @@ const baseUrl = 'https://fitnesstrac-kr.herokuapp.com/api';
 // #region Post
 
 // Register
-export async function Register(username, password) {
-    fetch(`${baseUrl}/register/`, {
+export async function register(username, password) {
+    const response = await fetch(`${baseUrl}/register/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -13,16 +13,14 @@ export async function Register(username, password) {
             username: username,
             password: password,
         })
-    }).then(response => response.json())
-        .then(result => {
-            console.log(result);
-        })
-        .catch(console.error);
+    });
+    
+    return response.json();
 }
 
 // Login
-export async function Login(username, password) {
-    fetch(`${baseUrl}/login/`, {
+export async function login(username, password) {
+    const response = await fetch(`${baseUrl}/login/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -31,211 +29,183 @@ export async function Login(username, password) {
             username: username,
             password: password,
         })
-    }).then(response => response.json())
-        .then(result => {
-            console.log(result);
-        })
-        .catch(console.error);
+    });
+    
+    return response.json();
 }
 
-// CreateRoutine
-export async function CreateRoutine(name, goal, isPublic) {
-    fetch(`${baseUrl}/routines`, {
+// createRoutine
+export async function createRoutine(name, goal, isPublic) {
+    const response = await fetch(`${baseUrl}/routines`, {
         method: 'POST',
         body: JSON.stringify({
             name: name,
             goal: goal,
             isPublic: isPublic
         })
-    }).then(response => response.json())
-        .then(result => {
-            console.log(result);
-        })
-        .catch(console.error);
+    });
+    
+    return response.json();
 }
 
-// CreateActivity
-export async function CreateActivity(name, description) {
-    fetch(`${baseUrl}/activities/`, {
+// createActivity
+export async function createActivity(name, description) {
+    const response = await fetch(`${baseUrl}/activities/`, {
         method: 'POST',
         body: JSON.stringify({
             name: name,
             description: description
         })
-    }).then(response => response.json())
-        .then(result => {
-            console.log(result);
-        })
-        .catch(console.error);
+    });
+    
+    return response.json();
 }
 
-// CreateActivityRoutine
-export async function CreateActivityRoutine(routineId, activityId, count, duration) {
-    fetch(`${baseUrl}/routines/${routineId}/activities`, {
+// createActivityRoutine
+export async function createActivityRoutine(routineId, activityId, count, duration) {
+    const response = await fetch(`${baseUrl}/routines/${routineId}/activities`, {
         method: 'POST',
         body: JSON.stringify({
             activityId: activityId,
             count: count,
             duration: duration
         })
-    }).then(response => response.json())
-        .then(result => {
-            console.log(result);
-        })
-        .catch(console.error);
+    });
+    
+    return response.json();
 }
 
 // #endregion
 
 // #region Get
 
-// GetMe
-export async function GetMe(token) {
-    fetch(`${baseUrl}/me/`, {
+// getMe
+export async function getMe(token) {
+    const response = await fetch(`${baseUrl}/me/`, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-    }).then(response => response.json())
-        .then(result => {
-            console.log(result);
-        })
-        .catch(console.error);
+    });
+    
+    return response.json();
 }
 
-// GetRoutines
-export async function GetRoutines() {
-    fetch(`${baseUrl}/routines/`, {
+// getRoutines
+export async function getRoutines() {
+    const response = await fetch(`${baseUrl}/routines/`, {
         headers: {
             'Content-Type': 'application/json',
         },
-    }).then(response => response.json())
-        .then(result => {
-            console.log(result);
-        })
-        .catch(console.error);
+    });
+    
+    return response.json();
 }
 
-// GetUserRoutines
-export async function GetUserRoutines(username) {
-    fetch(`${baseUrl}/users/${username}/routines`, {
+// getUserRoutines
+export async function getUserRoutines(username) {
+    const response = await fetch(`${baseUrl}/users/${username}/routines`, {
         headers: {
             'Content-Type': 'application/json',
         },
-    }).then(response => response.json())
-        .then(result => {
-            console.log(result);
-        })
-        .catch(console.error);
+    });
+
+    return response.json();
 }
 
-// GetActivities
-export async function GetActivities() {
-    fetch(`${baseUrl}/activities/`, {
+// getActivities
+export async function getActivities() {
+    const response = await fetch(`${baseUrl}/activities/`, {
         headers: {
             'Content-Type': 'application/json',
         },
-    }).then(response => response.json())
-        .then(result => {
-            console.log(result);
-        })
-        .catch(console.error);
+    });
+
+    return response.json();
 }
 
-// GetPublicRoutinesByActivity
-export async function GetPublicRoutinesByActivity(id) {
-    fetch(`${baseUrl}/activities/${id}/routines`, {
+// getPublicRoutinesByActivity
+export async function getPublicRoutinesByActivity(id) {
+    const response = await fetch(`${baseUrl}/activities/${id}/routines`, {
         headers: {
             'Content-Type': 'application/json',
         },
-    }).then(response => response.json())
-        .then(result => {
-            console.log(result);
-        })
-        .catch(console.error);
+    });
+
+    return response.json();
 }
 
 // #endregion
 
 // #region Update
 
-// UpdateRoutine
-export async function UpdateRoutine(id, name, goal) {
-    fetch(`${baseUrl}/routines/${id}/`, {
+// updateRoutine
+export async function updateRoutine(id, name, goal) {
+    const response = await fetch(`${baseUrl}/routines/${id}/`, {
         method: "PATCH",
         body: JSON.stringify({
             name: name,
             goal: goal,
         })
-    }).then(response => response.json())
-        .then(result => {
-            console.log(result);
-        })
-        .catch(console.error);
+    });
+    
+    return response.json();
 }
 
-// UpdateActivity
-export async function UpdateActivity(id, name, description) {
-    fetch(`${baseUrl}/activities/${id}`, {
+// updateActivity
+export async function updateActivity(id, name, description) {
+    const response = await fetch(`${baseUrl}/activities/${id}`, {
         method: 'PATCH',
         body: JSON.stringify({
             name: name,
             description: description
         })
-    }).then(response => response.json())
-        .then(result => {
-            console.log(result);
-        })
-        .catch(console.error);
+    });
+    
+    return response.json();
 }
 
-// UpdateRoutineActivity
-export async function UpdateRoutineActivity(id, count, duration) {
-    fetch(`${baseUrl}/routine_activities/${id}/`, {
+// updateRoutineActivity
+export async function updateRoutineActivity(id, count, duration) {
+    const response = await fetch(`${baseUrl}/routine_activities/${id}/`, {
         method: 'PATCH',
         body: JSON.stringify({
             count: count,
             duration: duration,
         })
-    }).then(response => response.json())
-        .then(result => {
-            console.log(result);
-        })
-        .catch(console.error);
+    });
+    
+    return response.json();
 }
 
 // #endregion
 
 // #region Delete
 
-// DeleteRoutine
-export async function DeleteRoutine(id, token) {
-    fetch(`${baseUrl}/routines/${id}/`, {
+// deleteRoutine
+export async function deleteRoutine(id, token) {
+    const response = await fetch(`${baseUrl}/routines/${id}/`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         }
-    }).then(response => response.json())
-        .then(result => {
-            console.log(result);
-        })
-        .catch(console.error);
+    });
+    
+    return response.json();
 }
 
-// DeleteRoutineActivity
-export async function DeleteRoutineActivity(id, token) {
-    fetch(`${baseUrl}/routine_activities/${id}/`, {
+// deleteRoutineActivity
+export async function deleteRoutineActivity(id, token) {
+    const response = await fetch(`${baseUrl}/routine_activities/${id}/`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         }
-    }).then(response => response.json())
-        .then(result => {
-            console.log(result);
-        })
-        .catch(console.error);
+    });
+    
+    return response.json();
 }
 
 // #endregion

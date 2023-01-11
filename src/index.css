@@ -1,4 +1,48 @@
 body {
     background: #eaeaea;
     font: 1em Arial, sans;
+    margin: 0;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+}
+
+#top {
+    background: rgb(213, 218, 219);
+    border-bottom: 1px dotted #333333;
+    display: flex;
+    flex-direction: row;
+    padding: 1em;
+}
+
+header {
+    font-size: 3em;
+}
+
+nav {
+
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 0.3em;
+    list-style: none;
+}
+
+nav ul li a {
+    background: rgb(116, 187, 203);
+    border-radius: 0.3rem;
+    color: rgb(13, 69, 82);
+    font-weight: bold;
+    padding: 0.8em;
+    text-decoration: none;
+}
+
+.info {
+    border: 1px dotted #333333;
+    margin: 1em 1em 0 1em;
+    padding: 1em;
 }
