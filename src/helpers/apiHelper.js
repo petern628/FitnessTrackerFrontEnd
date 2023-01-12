@@ -4,7 +4,7 @@ const baseUrl = 'https://fitnesstrac-kr.herokuapp.com/api';
 
 // Register
 export async function register(username, password) {
-    const response = await fetch(`${baseUrl}/register/`, {
+    const response = await fetch(`${baseUrl}/users/register/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -14,13 +14,13 @@ export async function register(username, password) {
             password: password,
         })
     });
-    
-    return response.json();
+
+    return await response.json();
 }
 
 // Login
 export async function login(username, password) {
-    const response = await fetch(`${baseUrl}/login/`, {
+    const response = await fetch(`${baseUrl}/users/login/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -31,21 +31,28 @@ export async function login(username, password) {
         })
     });
     
-    return response.json();
+    return await response.json();
 }
 
 // createRoutine
-export async function createRoutine(name, goal, isPublic) {
+export async function createRoutine(name, goal, isPublic, token) {
+
+    console.log(`it is ${isPublic} that this routine is public`)
+
     const response = await fetch(`${baseUrl}/routines`, {
         method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
         body: JSON.stringify({
             name: name,
             goal: goal,
             isPublic: isPublic
         })
     });
-    
-    return response.json();
+
+    return await response.json();
 }
 
 // createActivity
@@ -57,8 +64,8 @@ export async function createActivity(name, description) {
             description: description
         })
     });
-    
-    return response.json();
+
+    return await response.json();
 }
 
 // createActivityRoutine
@@ -71,8 +78,8 @@ export async function createActivityRoutine(routineId, activityId, count, durati
             duration: duration
         })
     });
-    
-    return response.json();
+
+    return await response.json();
 }
 
 // #endregion
@@ -81,14 +88,14 @@ export async function createActivityRoutine(routineId, activityId, count, durati
 
 // getMe
 export async function getMe(token) {
-    const response = await fetch(`${baseUrl}/me/`, {
+    const response = await fetch(`${baseUrl}/users/me/`, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
     });
-    
-    return response.json();
+
+    return await response.json();
 }
 
 // getRoutines
@@ -98,19 +105,20 @@ export async function getRoutines() {
             'Content-Type': 'application/json',
         },
     });
-    
-    return response.json();
+
+    return await response.json();
 }
 
 // getUserRoutines
-export async function getUserRoutines(username) {
+export async function getUserRoutines(username, token) {
     const response = await fetch(`${baseUrl}/users/${username}/routines`, {
         headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
         },
     });
 
-    return response.json();
+    return await response.json();
 }
 
 // getActivities
@@ -121,7 +129,7 @@ export async function getActivities() {
         },
     });
 
-    return response.json();
+    return await response.json();
 }
 
 // getPublicRoutinesByActivity
@@ -132,7 +140,7 @@ export async function getPublicRoutinesByActivity(id) {
         },
     });
 
-    return response.json();
+    return await response.json();
 }
 
 // #endregion
@@ -148,8 +156,8 @@ export async function updateRoutine(id, name, goal) {
             goal: goal,
         })
     });
-    
-    return response.json();
+
+    return await response.json();
 }
 
 // updateActivity
@@ -161,8 +169,8 @@ export async function updateActivity(id, name, description) {
             description: description
         })
     });
-    
-    return response.json();
+
+    return await response.json();
 }
 
 // updateRoutineActivity
@@ -174,8 +182,8 @@ export async function updateRoutineActivity(id, count, duration) {
             duration: duration,
         })
     });
-    
-    return response.json();
+
+    return await response.json();
 }
 
 // #endregion
@@ -191,8 +199,8 @@ export async function deleteRoutine(id, token) {
             'Authorization': `Bearer ${token}`
         }
     });
-    
-    return response.json();
+
+    return await response.json();
 }
 
 // deleteRoutineActivity
@@ -204,8 +212,8 @@ export async function deleteRoutineActivity(id, token) {
             'Authorization': `Bearer ${token}`
         }
     });
-    
-    return response.json();
+
+    return await response.json();
 }
 
 // #endregion

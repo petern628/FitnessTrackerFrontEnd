@@ -11,13 +11,20 @@ function Activities() {
         fetchData();
     }, []);
 
-    return (
-        activities.map((activity) => 
+    const activitiesHtml = activities?.map((activity) => {
+        return (
             <div key={activity.id} className="info">
-                <h1>{activity.name}</h1>
+                <h4>{activity.name}</h4>
                 <p>{activity.description}</p>
             </div>
-        )
+        );
+    });
+
+    return (
+        <div>
+            <h1>Activities</h1>
+            {activitiesHtml}
+        </div>
     );
 }
 
