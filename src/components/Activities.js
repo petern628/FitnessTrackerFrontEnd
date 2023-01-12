@@ -3,7 +3,7 @@ import { getActivities } from "../helpers/apiHelper";
 import { Link } from "react-router-dom";
 
 
-function Activities() {
+function Activities({ isLoggedIn }) {
     const [activities, setActivities] = useState([]);
 
     useEffect(() => {
@@ -22,12 +22,21 @@ function Activities() {
         );
     });
 
-    return (
-        <div>
-            <h1>Activities <Link to="/create-activity">+</Link></h1>
-            {activitiesHtml}
-        </div>
-    );
+    if (isLoggedIn) {
+        return (
+            <div>
+                <h1>Activities <Link to="/create-activity">+</Link></h1>
+                {activitiesHtml}
+            </div>
+        );
+    }
+    else {
+        return (
+            <div>
+                <h1>Activities</h1>
+                {activitiesHtml}
+            </div>
+        );
+    }
 }
-
 export default Activities;

@@ -38,7 +38,7 @@ function App() {
             <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/register" element={<Register setIsLoggedIn={setIsLoggedIn} />} />
-            <Route path="/activities" element={<Activities />} />
+            <Route path="/activities" element={<Activities isLoggedIn={isLoggedIn} />} />
             <Route path="/user-routines" element={<UserRoutines isLoggedIn={isLoggedIn} />} />
             <Route path="/create-routine" element={<CreateRoutine />} />
             <Route path="/create-activity" element={<CreateActivity />} />
