@@ -1,13 +1,16 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import {
+    NavLink,
+    // useNavigate 
+} from "react-router-dom";
 
 function Nav({ isLoggedIn, setIsLoggedIn }) {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    function handleLogOut() {
-        localStorage.removeItem('userToken');
-        setIsLoggedIn(false);
-        navigate('/login');
-    }
+    // function handleLogOut() {
+    //     localStorage.removeItem('userToken');
+    //     setIsLoggedIn(false);
+    //     navigate('/login');
+    // }
 
     if (isLoggedIn) {
         return (

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { getActivities } from "../helpers/apiHelper";
+import { Link } from "react-router-dom";
+
 
 function Activities() {
     const [activities, setActivities] = useState([]);
@@ -22,7 +24,7 @@ function Activities() {
 
     return (
         <div>
-            <h1>Activities</h1>
+            <h1>Activities <Link to="/create-activity">+</Link></h1>
             {activitiesHtml}
         </div>
     );

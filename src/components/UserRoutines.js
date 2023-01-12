@@ -14,7 +14,7 @@ function UserRoutines({ isLoggedIn }) {
             }
         }
         fetchData();
-    }, []);
+    }, [isLoggedIn, token]);
 
     async function handleDelete(id) {
         const deletedRoutine = await deleteRoutine(id, token);

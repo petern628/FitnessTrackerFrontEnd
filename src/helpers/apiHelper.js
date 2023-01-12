@@ -30,7 +30,7 @@ export async function login(username, password) {
             password: password,
         })
     });
-    
+
     return await response.json();
 }
 
@@ -56,9 +56,13 @@ export async function createRoutine(name, goal, isPublic, token) {
 }
 
 // createActivity
-export async function createActivity(name, description) {
+export async function createActivity(name, description, token) {
     const response = await fetch(`${baseUrl}/activities/`, {
         method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
         body: JSON.stringify({
             name: name,
             description: description
