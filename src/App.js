@@ -9,6 +9,7 @@ import Logout from './components/Logout';
 import CreateRoutine from './components/CreateRoutine';
 import Activities from './components/Activities';
 import CreateActivity from './components/CreateActivity';
+import EditRoutine from './components/EditRoutine';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -42,6 +43,7 @@ function App() {
             <Route path="/user-routines" element={<UserRoutines isLoggedIn={isLoggedIn} />} />
             <Route path="/create-routine" element={<CreateRoutine />} />
             <Route path="/create-activity" element={<CreateActivity />} />
+            <Route path="/edit-routine/:id/" element={<EditRoutine />} />
           </Routes>
         </div>
       </BrowserRouter>

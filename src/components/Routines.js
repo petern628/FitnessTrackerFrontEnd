@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { getRoutines } from "../helpers/apiHelper";
 
 function Routines() {
@@ -22,6 +23,7 @@ function Routines() {
                     <div key={activity.id} className="info">
                         <h4>{activity.name} ({activity.count} reps/{activity.duration} minutes)</h4>
                         <p>{activity.description}</p>
+                        <p><NavLink to={`/edit-routine/${activity.id}/`}>Edit Routine</NavLink></p>
                     </div>
                 );
             })}
