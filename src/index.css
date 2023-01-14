@@ -73,6 +73,7 @@ form input {
     font: 1em Arial, sans;
     margin-bottom: 3px;
     padding: 5px;
+    width: 50%;
 }
 
 form button {

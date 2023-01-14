@@ -24,7 +24,7 @@ function UserRoutines({ isLoggedIn }) {
 
     const userRoutinesHtml = userRoutines?.map((routine) =>
         <div key={routine.id} className="info">
-            <h2>{routine.name} <a href="#" onClick={() => handleDelete(routine.id)}>X</a></h2>
+            <h2>{routine.name} <button onClick={() => handleDelete(routine.id)}>X</button></h2>
             <p>By <b>{routine.creatorName}</b></p>
             <p>{routine.goal}</p>
             <p><i>This routine is {routine.isPublic} public if true</i></p>

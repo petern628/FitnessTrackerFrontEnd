@@ -134,7 +134,7 @@ export async function getActivities() {
 
 // getPublicRoutinesByActivity
 export async function getPublicRoutinesByActivity(id) {
-    const response = await fetch(`${baseUrl}/activities/${id}/routines`, {
+    const response = await fetch(`${baseUrl}/activities/${id}/routines/`, {
         headers: {
             'Content-Type': 'application/json',
         },
@@ -156,7 +156,7 @@ export async function updateRoutine(id, name, goal) {
             goal: goal,
         })
     });
-
+    
     return await response.json();
 }
 
@@ -169,6 +169,8 @@ export async function updateActivity(id, name, description) {
             description: description
         })
     });
+
+    console.log(await response.json());
 
     return await response.json();
 }
