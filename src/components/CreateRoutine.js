@@ -33,6 +33,8 @@ function CreateRoutine() {
             return;
         }
     }
+
+    
     return (
         <div className="info">
             <h1>Create Routine</h1>
