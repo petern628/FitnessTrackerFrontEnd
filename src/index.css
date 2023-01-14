@@ -41,6 +41,7 @@ nav ul li a {
     background: rgb(116, 187, 203);
     border-radius: 0.3rem;
     color: rgb(13, 69, 82);
+    display: block;
     font-weight: bold;
     padding: 0.8em;
     text-decoration: none;
@@ -69,7 +70,16 @@ form div.checkbox-label label {
     display: inline-block;
 }
 
-form input {
+form input[type=text] {
+    display: block;
+    font: 1em Arial, sans;
+    margin-bottom: 3px;
+    padding: 5px;
+    width: 50%;
+}
+
+form select {
+    display: block;
     font: 1em Arial, sans;
     margin-bottom: 3px;
     padding: 5px;

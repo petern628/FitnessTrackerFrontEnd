@@ -14,8 +14,8 @@ function Nav({ isLoggedIn, setIsLoggedIn }) {
             <nav>
                 <ul>
                     <li><NavLink to="/">Routines</NavLink></li>
-                    <li><NavLink to="/user-routines">My Routines</NavLink></li>
                     <li><NavLink to="/activities">Activities</NavLink></li>
+                    <li><NavLink to="/user-routines">My Routines</NavLink></li>
                     <li><NavLink to="/logout">Logout</NavLink></li>
                 </ul>
             </nav>

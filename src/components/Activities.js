@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getActivities } from "../helpers/apiHelper";
 
 function Activities() {
@@ -14,7 +15,7 @@ function Activities() {
     const activitiesHtml = activities?.map((activity) => {
         return (
             <div key={activity.id} className="info">
-                <h4>{activity.name}</h4>
+                <h4>{activity.name} <Link to={`/add-to-routine/${activity.id}`}>+ Add to Routine</Link></h4>
                 <p>{activity.description}</p>
             </div>
         );
@@ -22,7 +23,7 @@ function Activities() {
 
     return (
         <div>
-            <h1>Activities</h1>
+            <h1>Activities <Link to="/create-activity">+</Link></h1>
             {activitiesHtml}
         </div>
     );

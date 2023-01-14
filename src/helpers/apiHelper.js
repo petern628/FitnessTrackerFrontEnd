@@ -56,9 +56,13 @@ export async function createRoutine(name, goal, isPublic, token) {
 }
 
 // createActivity
-export async function createActivity(name, description) {
+export async function createActivity(name, description, token) {
     const response = await fetch(`${baseUrl}/activities/`, {
         method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
         body: JSON.stringify({
             name: name,
             description: description
@@ -68,9 +72,9 @@ export async function createActivity(name, description) {
     return await response.json();
 }
 
-// createActivityRoutine
-export async function createActivityRoutine(routineId, activityId, count, duration) {
-    const response = await fetch(`${baseUrl}/routines/${routineId}/activities`, {
+// attachActivityRoutine
+export async function attachActivityRoutine(routineId, activityId, count, duration) {
+    const response = await fetch(`${baseUrl}/routines/${routineId}/activities/`, {
         method: 'POST',
         body: JSON.stringify({
             activityId: activityId,
@@ -118,7 +122,11 @@ export async function getUserRoutines(username, token) {
         },
     });
 
-    return await response.json();
+    const json = await response.json();
+
+    console.log(json);
+
+    return json;
 }
 
 // getActivities
