@@ -5,7 +5,6 @@ import { getPublicRoutinesByActivity, updateRoutine } from "../helpers/apiHelper
 function EditRoutine() {
     const params = useParams();
     const activityId = params.id;
-    const token = localStorage.getItem('userToken');
     
     const navigate = useNavigate();
 

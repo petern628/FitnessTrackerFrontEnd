@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { createActivity } from "../helpers/apiHelper";
 
 function CreateActivity() {
-    const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState();
+
+    const token = localStorage.getItem('userToken');
 
     async function handleSubmit(event) {
         event.preventDefault();
@@ -12,21 +12,12 @@ function CreateActivity() {
         const name = event.target.name.value;
         const description = event.target.description.value;
 
-        if (!name || !description) {
-            setErrorMessage("All fields are required.");
-            return;
-        }
+        const createdActivity = await createActivity(name, description, token);
 
-        const token = localStorage.getItem('userToken');
-
-        if (token) {
-            await createActivity(name, description, token);
-            navigate('/activities');
-        }
-        else {
-            return;
-        }
+        if (createdActivity.id)
+            alert('it was created');
     }
+
     return (
         <div className="info">
             <h1>Create Activity</h1>
@@ -43,7 +34,13 @@ function CreateActivity() {
             </form>
             <span>{errorMessage}</span>
         </div>
-    )
+    );
 }
 
 export default CreateActivity;
+
+// Create a new component
+// Go to App.js, create a route for that component
+// Create a form to allow the user to input data to create an activity
+// Implement a handle submit action for when the form is submitted
+// 

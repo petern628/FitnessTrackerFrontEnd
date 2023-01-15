@@ -72,9 +72,9 @@ export async function createActivity(name, description, token) {
     return await response.json();
 }
 
-// createActivityRoutine
-export async function createActivityRoutine(routineId, activityId, count, duration) {
-    const response = await fetch(`${baseUrl}/routines/${routineId}/activities`, {
+// attachActivityRoutine
+export async function attachActivityRoutine(routineId, activityId, count, duration) {
+    const response = await fetch(`${baseUrl}/routines/${routineId}/activities/`, {
         method: 'POST',
         body: JSON.stringify({
             activityId: activityId,
@@ -122,7 +122,11 @@ export async function getUserRoutines(username, token) {
         },
     });
 
-    return await response.json();
+    const json = await response.json();
+
+    console.log(json);
+
+    return json;
 }
 
 // getActivities

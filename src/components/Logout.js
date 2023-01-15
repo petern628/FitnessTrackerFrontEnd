@@ -1,5 +1,6 @@
-function Logout() {
+function Logout({ setIsLoggedIn }) {
     localStorage.removeItem('userToken');
+    setIsLoggedIn(false);
     
     return (
         <div className="info">
