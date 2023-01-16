@@ -19,7 +19,7 @@ function AddToRoutine({ isLoggedIn }) {
             }
         }
         fetchData();
-    }, []);
+    }, [isLoggedIn, token]);
 
     async function handleSubmit(event) {
         event.preventDefault();
@@ -36,7 +36,7 @@ function AddToRoutine({ isLoggedIn }) {
         const routineActivity = await attachActivityRoutine(routineId, activityId, count, duration);
 
         console.log(routineActivity);
-        
+
         if (routineActivity.id)
             navigate('/user-routines');
     }

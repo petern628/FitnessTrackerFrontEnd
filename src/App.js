@@ -10,7 +10,6 @@ import CreateRoutine from './components/CreateRoutine';
 import Activities from './components/Activities';
 import CreateActivity from './components/CreateActivity';
 import EditRoutine from './components/EditRoutine';
-import CreateActivity from './components/CreateActivity';
 import AddToRoutine from './components/AddToRoutine';
 
 function App() {
@@ -24,7 +23,7 @@ function App() {
         setIsLoggedIn(true);
     }
     fetchData();
-  }, []);
+  }, [userToken]);
 
   return (
     <div id="container">

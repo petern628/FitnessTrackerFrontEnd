@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getActivities } from "../helpers/apiHelper";
-import { Link } from "react-router-dom";
 
 
 function Activities({ isLoggedIn }) {

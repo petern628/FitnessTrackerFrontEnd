@@ -12,6 +12,11 @@ function CreateActivity() {
         const name = event.target.name.value;
         const description = event.target.description.value;
 
+        if (!name || !description) {
+            setErrorMessage("All fields are required.");
+            return;
+        }
+
         const createdActivity = await createActivity(name, description, token);
 
         if (createdActivity.id)

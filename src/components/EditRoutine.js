@@ -5,27 +5,32 @@ import { getPublicRoutinesByActivity, updateRoutine } from "../helpers/apiHelper
 function EditRoutine() {
     const params = useParams();
     const activityId = params.id;
-    
+
     const navigate = useNavigate();
 
     const [routines, setRoutines] = useState([]);
     const [errorMessage, setErrorMessage] = useState();
 
-    const [name, setName] = useState();
-    const [goal, setGoal] = useState();
+    const [, setName] = useState();
+    const [, setGoal] = useState();
 
     useEffect(() => {
         async function fetchData() {
             setRoutines(await getPublicRoutinesByActivity(activityId));
         }
         fetchData();
-    }, []);
+    }, [activityId]);
 
     async function handleSubmit(event, routineId) {
         event.preventDefault();
-        
+
         const name = event.target.name.value;
         const goal = event.target.goal.value;
+
+        if (!name || !goal) {
+            setErrorMessage("All fields are required.");
+            return;
+        }
 
         const updatedRoutine = await updateRoutine(routineId, name, goal);
 
@@ -40,11 +45,11 @@ function EditRoutine() {
                 <form onSubmit={(event) => handleSubmit(event, routine.id)}>
                     <div>
                         <label htmlFor="name">Name</label>
-                        <input type="text" name="name"  onChange={(event) => setName(event.target.value)} />
+                        <input type="text" name="name" onChange={(event) => setName(event.target.value)} />
                     </div>
                     <div>
                         <label htmlFor="goal">Goal</label>
-                        <input type="text" name="goal"  onChange={(event) => setGoal(event.target.value)}  />
+                        <input type="text" name="goal" onChange={(event) => setGoal(event.target.value)} />
                     </div>
                     <button>Submit</button>
                 </form>

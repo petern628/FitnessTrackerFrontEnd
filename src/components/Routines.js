@@ -15,7 +15,7 @@ function Routines() {
     const routinesHtml = routines?.map((routine) =>
         <div key={routine.id} className="info">
             <h2>{routine.name}</h2>
-            <p>By <b>{routine.creatorName}</b></p>
+            <p>By <NavLink to={`/routines/${routine.id}/`}><b>{routine.creatorName}</b></NavLink></p>
             <p>{routine.goal}</p>
             <p><i>This routine is {routine.isPublic ? 'public' : 'private'}</i></p>
             {routine.activities?.map((activity) => {
